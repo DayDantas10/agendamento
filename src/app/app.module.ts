@@ -5,11 +5,13 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.component';
+import { BuscarmedicosComponent } from './buscarmedicos/buscarmedicos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CadastrarmedicosComponent
+    CadastrarmedicosComponent,
+    BuscarmedicosComponent
   ],
   imports: [
     BrowserModule,
