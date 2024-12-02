@@ -1,22 +1,18 @@
 <h1>Buscar Filme</h1>
 <form [formGroup]="formBusca">
-<label for="titulo">Título: </label>
+<label for="nome">Nome: </label>
 <input  type="text" 
-        id="titulo" 
-        name="titulo"
-        formControlName="titulo"> 
+        id="nome" 
+        name="nome"
+        formControlName="nome"> 
 <input type="button" value="Buscar"
         [disabled]="formBusca.invalid"
         (click)="buscar()">
 </form>
 <br>
 <br>
-<div *ngIf="filme != undefined">
-        <img [src]="filme.Poster" alt="Poster">]
+<div *ngIf="medicos!= undefined">
         <ul>
-        <li>{{filme.Title}}</li>
-        <li>Diretor: {{filme.Director}}</li>
-        <li>Gênero: {{filme.Genre}}</li>
-        <li>Ano: {{filme.Year}}</li>
+        <li>{{medicos.nome}}</li>
         </ul>
 </div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MedicosService } from '../models/medicos.service';
+import { Medicos } from '../medicos';
 
 @Component({
   selector: 'app-buscarmedicos',
@@ -6,27 +9,22 @@ import { Component } from '@angular/core';
   styleUrl: './buscarmedicos.component.css'
 })
 export class BuscarmedicosComponent {
-
+formBusca: FormGroup 
+medicos: Medicos | undefined
+constructor(private fb: FormBuilder,
+            private fs: MedicosService){
+  this.formBusca = this.fb.group({
+    nome: ['', [Validators.required,]] /*Digitar pelo menos 1 letra*/
+  })
 }
-export class BuscaFilmesComponent {
 
-  formBusca: FormGroup 
-  filme: Filme | undefined
-  constructor(private fb: FormBuilder,
-              private fs: FilmeService){
-    this.formBusca = this.fb.group({
-      titulo: ['', [Validators.required,
-                    Validators.minLength(2)]] /*Digitar pelo menos 1 letra*/
-    })
-  }
-
-  buscar(){
-    const titulo = this.formBusca.value.titulo /*retorna um objeto json*/
-    this.fs.buscarPeloTitulo(titulo).subscribe(
-      res=> { /** resposta concreta ou vazia */
-        this.filme = res.Search /**resposta da requisição atribuída ao objeto filme */
-      }
-    )
-  }
+buscar(){
+  const nome = this.formBusca.value.nome /*retorna um objeto json*/
+  this.fs.buscarPeloNome(nome).subscribe(
+    res=> { /** resposta concreta ou vazia */
+      this.medicos = res.Search /**resposta da requisição atribuída ao objeto filme */
+    }
+  )
+}
 
 }

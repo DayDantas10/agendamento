@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.component';
 import { BuscarmedicosComponent } from './buscarmedicos/buscarmedicos.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { BuscarmedicosComponent } from './buscarmedicos/buscarmedicos.component'
     ReactiveFormsModule
   ],
   providers: [
-    provideClientHydration()
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })
