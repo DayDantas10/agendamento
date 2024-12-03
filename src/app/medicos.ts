@@ -1,8 +1,5 @@
 export class Medicos {
-    buscarPeloTitulo(nome: any) {
-      throw new Error('Method not implemented.')
-    }
-    'inscricao': string = ''
+   'inscricao': string = ''
     'uf': string = ''
     'endereco': string = ''
     'endereco_uf': string = ''
