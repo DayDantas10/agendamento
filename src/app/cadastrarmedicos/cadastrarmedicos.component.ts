@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './cadastrarmedicos.component.html',
   styleUrl: './cadastrarmedicos.component.css'
 })
-export class CadastrarmedicosComponent {
+export class CadastrarmedicosComponent {  
 }
