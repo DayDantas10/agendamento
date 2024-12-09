@@ -8,13 +8,15 @@ import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.c
 import { BuscarmedicosComponent } from './buscarmedicos/buscarmedicos.component';
 import { provideHttpClient } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastrarmedicosComponent,
     BuscarmedicosComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
