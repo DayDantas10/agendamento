@@ -1,6 +1,6 @@
 export class Medicos {
    'inscricao': string = ''
-    uf': string = ''
+     uf: string = ''
     'endereco': string = ''
     'endereco_uf': string = ''
     'especialidade': string = ''
@@ -14,7 +14,7 @@ export class Medicos {
     'outras_inscricoes': string = ''
     'primeira_inscricao_uf_data': string = ''
     'situacao': string = ''
-    'telefone': string = '''
+    'telefone': string = ''
     Search: Medicos | undefined
 
 }

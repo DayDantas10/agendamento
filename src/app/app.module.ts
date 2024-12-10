@@ -1,31 +1,29 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // Importando o FormsModule
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.component';
-import { BuscarmedicosComponent } from './buscarmedicos/buscarmedicos.component';
-import { provideHttpClient } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
+import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.component'; // Seu componente
+import { CadastrarEspecialidadeComponent } from './cadastrarespecialidade/cadastrarespecialidade.component';
+import { CadastrarPacientesComponent } from './cadastrarpacientes/cadastrarpacientes.component';
+import { BuscarMedicosComponent } from './buscarmedicos/buscarmedicos.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastrarmedicosComponent,
-    BuscarmedicosComponent,
-    LoginComponent,
-    MenuComponent
+    CadastrarEspecialidadeComponent,
+    CadastrarPacientesComponent, 
+    BuscarMedicosComponent
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  
-    ReactiveFormsModule
+    FormsModule // Adicionando o FormsModule aos imports
   ],
-  providers: [
-    provideHttpClient()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

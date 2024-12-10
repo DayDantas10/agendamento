@@ -1,29 +1,40 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MedicosService } from '../models/medicos.service';
-import { Medicos } from '../medicos';
 
 @Component({
   selector: 'app-buscarmedicos',
   templateUrl: './buscarmedicos.component.html',
-  styleUrl: './buscarmedicos.component.css'
+  styleUrls: ['./buscarmedicos.component.css']
 })
-export class BuscarmedicosComponent {
-formBusca: FormGroup 
-medicos: Medicos | undefined
-constructor(private fb: FormBuilder,
-            private fs: MedicosService){
-  this.formBusca = this.fb.group({
-    nome: ['', [Validators.required,]] /*Digitar pelo menos 1 letra*/
-  })
-}
+export class BuscarMedicosComponent {
 
-buscar(){
-  const nome = this.formBusca.value.nome /*retorna um objeto json*/
-  this.fs.buscarPeloNome(nome).subscribe(
-    res=> { /** resposta concreta ou vazia */
-      this.medicos = res.Search /**resposta da requisição atribuída ao objeto filme */
-    }
-  )
-}
+  nome: string = '';
+  especialidade: string = '';
+  horarios: any[] = [];
+
+  // Simulando uma lista de médicos e horários
+  listaDeHorarios = [
+    { medico: 'Dr. João', especialidade: 'Cardiologia', horario: '10:00', disponivel: true },
+    { medico: 'Dr. João', especialidade: 'Cardiologia', horario: '14:00', disponivel: true },
+    { medico: 'Dr. Maria', especialidade: 'Ortopedia', horario: '09:00', disponivel: true },
+    { medico: 'Dr. Maria', especialidade: 'Ortopedia', horario: '11:00', disponivel: true },
+    { medico: 'Dr. José', especialidade: 'Neurologia', horario: '15:00', disponivel: true },
+    { medico: 'Dr. José', especialidade: 'Neurologia', horario: '16:00', disponivel: true },
+    { medico: 'Dr. Paula', especialidade: 'Pediatria', horario: '08:00', disponivel: true },
+    { medico: 'Dr. Paula', especialidade: 'Pediatria', horario: '13:00', disponivel: true }
+  ];
+
+  // Método para buscar horários disponíveis com base no nome e especialidade
+  onSearch() {
+    this.horarios = this.listaDeHorarios.filter(horario => {
+      const nomeMatch = this.nome ? horario.medico.toLowerCase().includes(this.nome.toLowerCase()) : true;
+      const especialidadeMatch = this.especialidade ? horario.especialidade.toLowerCase() === this.especialidade.toLowerCase() : true;
+      return nomeMatch && especialidadeMatch;
+    });
+  }
+
+  // Método para agendar o horário
+  agendar(horario: any) {
+    alert(`Você agendou o horário com ${horario.medico} para ${horario.horario}`);
+    // Aqui você pode adicionar lógica para armazenar o agendamento, por exemplo, chamando uma API ou serviço
+  }
 }
