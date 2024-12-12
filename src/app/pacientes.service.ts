@@ -1,29 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PacientesService {
+  private apiUrl = 'http://localhost:3000/paciente'; // URL da API
 
-  // Simulação de uma lista de pacientes armazenada localmente (poderia ser uma API no futuro)
-  private pacientes: { nome: string; cpf: string; email: string }[] = [];
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
-
-  // Método para adicionar um paciente à lista
-  adicionarPaciente(paciente: { nome: string; cpf: string; email: string }) {
-    this.pacientes.push(paciente); // Adiciona o paciente à lista
-    console.log('Paciente adicionado:', paciente);
+  // Método para adicionar um paciente enviando uma requisição POST
+  adicionarPaciente(paciente: { nome: string; cpf: string; email: string }): Observable<any> {
+    return this.http.post(this.apiUrl, paciente);
   }
 
-  // Método para obter todos os pacientes cadastrados
+  // Método para obter todos os pacientes cadastrados (simulação)
   getPacientes() {
-    return this.pacientes; // Retorna a lista de pacientes
+    return this.getPacientes;
   }
 
-  // Método para remover um paciente com base no CPF
-  removerPaciente(cpf: string) {
-    this.pacientes = this.pacientes.filter(p => p.cpf !== cpf); // Remove o paciente com o CPF especificado
-    console.log(`Paciente com CPF ${cpf} removido.`);
-  }
 }

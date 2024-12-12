@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PacientesService } from '../pacientes.service';
 
 @Component({
   selector: 'app-cadastrarpacientes',
@@ -12,14 +13,20 @@ export class CadastrarPacientesComponent {
     email: ''
   };
 
+  constructor(private pacientesService: PacientesService) {}
+
   // Método chamado quando o formulário é enviado
   onSubmit() {
-    console.log('Paciente cadastrado:', this.paciente);
-
-    // Limpar os campos do formulário após o envio
-    this.paciente.nome = '';
-    this.paciente.cpf = '';
-    this.paciente.email = '';
+    this.pacientesService.adicionarPaciente(this.paciente).subscribe(response => {
+      console.log('Paciente cadastrado:', response);
+      
+      // Limpar os campos do formulário após o envio
+      this.paciente.nome = '';
+      this.paciente.cpf = '';
+      this.paciente.email = '';
+    }, (error: any) => {
+      console.error('Erro ao cadastrar paciente:', error);
+    });
   }
 
   // Método para cancelar e limpar os campos
