@@ -7,7 +7,7 @@ import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.c
 import { CadastrarEspecialidadeComponent } from './cadastrarespecialidade/cadastrarespecialidade.component';
 import { CadastrarPacientesComponent } from './cadastrarpacientes/cadastrarpacientes.component';
 import { BuscarMedicosComponent } from './buscarmedicos/buscarmedicos.component';
-import { PacientesService } from './pacientes.service';
+import { MenuComponent } from './menu/menu.component';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
     CadastrarmedicosComponent,
     CadastrarEspecialidadeComponent,
     CadastrarPacientesComponent, 
@@ -23,10 +24,9 @@ import { HttpClient } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClient // Adicionando o FormsModule aos imports
+    FormsModule, // Adicionando o FormsModule aos imports
   ],
-  providers: [PacientesService],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

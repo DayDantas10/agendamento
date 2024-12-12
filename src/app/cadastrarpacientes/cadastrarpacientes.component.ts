@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PacientesService } from '../pacientes.service';
+import { PacientesService } from '../models/pacientes.service';
 
 @Component({
   selector: 'app-cadastrarpacientes',

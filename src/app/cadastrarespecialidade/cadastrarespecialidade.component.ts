@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { EspecialidadeService } from '../especialidade.service';  // Importa o serviço
+import { EspecialidadeService } from '../models/especialidade.service';
+  // Importa o serviço
 
 @Component({
   selector: 'app-cadastrar-especialidade',
