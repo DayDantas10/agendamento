@@ -7,17 +7,18 @@ import { Component } from '@angular/core';
 })
 export class CadastrarmedicosComponent {
   // Propriedades para armazenar os dados do formulário
-  crm: string = '';
-  name: string = '';
-  specialty: string = '';
+  CRM: string = '';
+  nome: string = '';
+  CodEspe: string = '';
+medico: any;
 
   // Função chamada ao submeter o formulário
   onSubmit() {
     if (this.isFormValid()) {
       console.log('Formulário enviado com sucesso');
-      console.log('CRM:', this.crm);
-      console.log('Nome:', this.name);
-      console.log('Especialidade:', this.specialty);
+      console.log('CRM:', this.CRM);
+      console.log('Nome:', this.nome);
+      console.log('Especialidade:', this.CodEspe);
 
       // Aqui você pode adicionar a lógica para enviar os dados para o backend ou serviço
     } else {
@@ -27,14 +28,14 @@ export class CadastrarmedicosComponent {
 
   // Função de validação do formulário
   isFormValid(): boolean {
-    return this.crm !== '' && this.name !== '' && this.specialty !== '';
+    return this.CRM !== '' && this.nome !== '' && this.CodEspe !== '';
   }
 
   // Função chamada ao clicar no botão "Cancelar"
   cancelar() {
-    this.crm = '';
-    this.name = '';
-    this.specialty = '';
+    this.CRM = '';
+    this.nome = '';
+    this.CodEspe = '';
     console.log('Cadastro cancelado');
   }
 }
