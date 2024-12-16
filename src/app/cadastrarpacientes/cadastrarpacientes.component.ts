@@ -28,7 +28,6 @@ export class CadastrarPacientesComponent {
       console.error('Erro ao cadastrar paciente:', error);
     });
   }
-
   // Método para cancelar e limpar os campos
   cancelar() {
     this.paciente.nome = '';

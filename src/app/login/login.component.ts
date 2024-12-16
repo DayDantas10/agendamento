@@ -8,8 +8,8 @@ import { AuthService } from '../models/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  cpf: string = '';  // Propriedade para armazenar o CPF
-  password: string = '';  // Propriedade para armazenar a senha
+  cpf: string = 'Atendente';  // Propriedade para armazenar o CPF
+  password: string = '123@acesso';  // Propriedade para armazenar a senha
 
   constructor(private authservice:AuthService) {}
 

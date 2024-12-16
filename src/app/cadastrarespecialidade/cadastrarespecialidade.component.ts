@@ -3,14 +3,14 @@ import { EspecialidadeService } from '../models/especialidade.service';
   // Importa o serviço
 
 @Component({
-  selector: 'app-cadastrar-especialidade',
+  selector: 'app-cadastrarespecialidade',
   templateUrl: './cadastrarespecialidade.component.html',
   styleUrls: ['./cadastrarespecialidade.component.css']
 })
 export class CadastrarEspecialidadeComponent {
 
   especialidade = {
-    codigo: '',
+    CodEspe:  undefined ,
     nome: ''
   };
 
@@ -20,15 +20,15 @@ export class CadastrarEspecialidadeComponent {
   onSubmit() {
     // Chama o serviço para adicionar a especialidade
     this.especialidadeService.adicionarEspecialidade(this.especialidade);
-    
+
     // Limpar os campos do formulário após o envio
-    this.especialidade.codigo = '';
+    this.especialidade.CodEspe = undefined
     this.especialidade.nome = '';
   }
 
   // Método para limpar os campos do formulário
   cancelar() {
-    this.especialidade.codigo = '';
-    this.especialidade.nome = '';
+    this.especialidade.CodEspe = undefined
+    this.especialidade.nome = ''
   }
 }

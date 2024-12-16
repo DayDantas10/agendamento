@@ -1,12 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Especialidade } from './especialidades';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EspecialidadeService {
-  adicionarEspecialidade(especialidade: { codigo: string; nome: string; }) {
-      throw new Error('Method not implemented.');
-  }
+  private apiUrl = 'http://localhost:3000'; // URL da API
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  // Método para adicionar um paciente enviando uma requisição POST
+  adicionarEspecialidade(especialidade: Especialidade): Observable<any> {
+    return this.http.post(`${this.apiUrl}/especialidade`, especialidade);
+  }
 }

@@ -8,7 +8,7 @@ import { CadastrarEspecialidadeComponent } from './cadastrarespecialidade/cadast
 import { CadastrarPacientesComponent } from './cadastrarpacientes/cadastrarpacientes.component';
 import { BuscarMedicosComponent } from './buscarmedicos/buscarmedicos.component';
 import { MenuComponent } from './menu/menu.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 
 
@@ -26,7 +26,7 @@ import { HttpClient } from '@angular/common/http';
     BrowserModule,
     FormsModule, // Adicionando o FormsModule aos imports
   ],
-  providers: [HttpClient],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

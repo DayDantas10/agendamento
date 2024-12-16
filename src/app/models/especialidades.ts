@@ -1,4 +1,4 @@
-export class Especialidades{
-    codigo = ''
-    nome = ''
+export class Especialidade{
+    CodEspe: number | undefined
+    nome:string= ""
 }
