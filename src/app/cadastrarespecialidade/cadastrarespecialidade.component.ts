@@ -10,25 +10,27 @@ import { EspecialidadeService } from '../models/especialidade.service';
 export class CadastrarEspecialidadeComponent {
 
   especialidade = {
-    CodEspe:  undefined ,
+    CodEspe: '',
     nome: ''
   };
 
   constructor(private especialidadeService: EspecialidadeService) { }
 
-  // Método chamado quando o formulário é enviado
   onSubmit() {
-    // Chama o serviço para adicionar a especialidade
-    this.especialidadeService.adicionarEspecialidade(this.especialidade);
-
-    // Limpar os campos do formulário após o envio
-    this.especialidade.CodEspe = undefined
+    console.log('Enviando especialidade...', this.especialidade);  // Para depuração
+    this.especialidadeService.adicionarEspecialidade(this.especialidade)
+      .subscribe(response => {
+        console.log('Resposta do servidor:', response);  // Para verificar a resposta da API
+      }, error => {
+        console.error('Erro ao adicionar especialidade:', error);  // Para ver os erros
+      });
+    this.especialidade.CodEspe = '';
     this.especialidade.nome = '';
   }
-
+  
   // Método para limpar os campos do formulário
   cancelar() {
-    this.especialidade.CodEspe = undefined
-    this.especialidade.nome = ''
+    this.especialidade.CodEspe = '';
+    this.especialidade.nome = '';
   }
 }

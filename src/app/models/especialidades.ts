@@ -1,4 +1,4 @@
 export class Especialidade{
-    CodEspe: number | undefined
-    nome:string= ""
+    CodEspe:string=''
+    nome:string= ''
 }

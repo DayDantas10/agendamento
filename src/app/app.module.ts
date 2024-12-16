@@ -11,7 +11,6 @@ import { MenuComponent } from './menu/menu.component';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
