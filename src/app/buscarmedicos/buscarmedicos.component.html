@@ -1,65 +1,64 @@
 <div class="container">
-        <!-- Cabeçalho -->
-        <header class="header">
-          <div class="logo">
-            <img src="https://www.hospitalriogrande.com.br/assets/site/images/logo-hospital-rio-grande.png" alt="Logo">
-          </div>
-        </header>
-      
-        <!-- Formulário de Busca -->
-        <div class="form-container">
-          <h3>Buscar Horários Disponíveis</h3>
-          <form (ngSubmit)="onSearch()">
-            <div class="form-group">
-              <label for="nome">Nome do Médico</label>
-              <input type="text" id="nome"  name="nome" class="form-control" placeholder="Digite o nome do médico">
-            </div>
-      
-            <div class="form-group">
-              <label for="especialidade">Especialidade</label>
-              <select id="especialidade"  name="especialidade" class="form-control">
-                <option value="">Selecione</option>
-                <option value="Cardiologia">Cardiologia</option>
-                <option value="Ortopedia">Ortopedia</option>
-                <option value="Neurologia">Neurologia</option>
-                <option value="Pediatria">Pediatria</option>
-              </select>
-            </div>
-      
-            <button type="submit" class="btn btn-primary">Buscar</button>
-          </form>
-        </div>
-      
-        <!-- Resultados da Busca -->
-        <div *ngIf="horarios.length > 0" class="resultados">
-          <h4>Horários Disponíveis</h4>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Médico</th>
-                <th scope="col">Especialidade</th>
-                <th scope="col">Horário</th>
-                <th scope="col">Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let horario of horarios">
-                <td>{{ horario.medico }}</td>
-                <td>{{ horario.especialidade }}</td>
-                <td>{{ horario.horario }}</td>
-                <td><button class="btn btn-success" (click)="agendar(horario)">Agendar</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      
-        <!-- Rodapé -->
-        <footer class="footer">
-          <div class="footer-content">
-            <p><a href="https://www.instagram.com" target="_blank">Instagram</a></p>
-            <p>Endereço: Rua Exemplo, 123</p>
-            <p>Telefone: (11) 1234-5678</p>
-          </div>
-        </footer>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://www.hospitalriogrande.com.br/assets/site/images/logo-hospital-rio-grande.png" alt="Logo">
+    </div>
+  </header>
+
+  <!-- Formulário de Busca -->
+  <div class="form-container">
+    <h3>Buscar Horários Disponíveis</h3>
+    <form (ngSubmit)="onSearch()">
+      <div class="form-group">
+        <label for="nome">Nome do Médico</label>
+        <input type="text" id="nome" name="nome" [(ngModel)]="nome" class="form-control" placeholder="Digite o nome do médico">
       </div>
-      
+
+      <div class="form-group">
+        <label for="especialidade">Especialidade</label>
+        <select id="especialidade" name="especialidade" [(ngModel)]="especialidade" class="form-control">
+          <option value="">Selecione</option>
+          <option value="Cardiologia">Cardiologia</option>
+          <option value="Ortopedia">Ortopedia</option>
+          <option value="Neurologia">Neurologia</option>
+          <option value="Pediatria">Pediatria</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+  </div>
+
+  <!-- Resultados da Busca -->
+  <div *ngIf="horarios.length > 0" class="resultados">
+    <h4>Horários Disponíveis</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Médico</th>
+          <th scope="col">Especialidade</th>
+          <th scope="col">Horário</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let horario of horarios">
+          <td>{{ horario.medico }}</td>
+          <td>{{ horario.especialidade }}</td>
+          <td>{{ horario.horario }}</td>
+          <td><button class="btn btn-success" (click)="agendar(horario)">Agendar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p><a href="https://www.instagram.com" target="_blank">Instagram</a></p>
+      <p>Endereço: Rua Exemplo, 123</p>
+      <p>Telefone: (11) 1234-5678</p>
+    </div>
+  </footer>
+</div>
