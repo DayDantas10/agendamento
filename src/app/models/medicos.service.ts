@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Medico } from '../medicos';
+import { Medico } from './medicos';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +10,10 @@ export class MedicosService {
   constructor(private http: HttpClient) {}
 
   // Método para adicionar um paciente enviando uma requisição POST
-  adicionarEspecialidade(medico: Medico): Observable<any> {
+  adicionarMedico(medico: Medico): Observable<any> {
     return this.http.post(`${this.apiUrl}/medico`, medico);
   }
-
+  getMedico(crm:string): Observable<any>{
+    return this.http.get(`${this.apiUrl}/medico/crm`)
+  }
 }

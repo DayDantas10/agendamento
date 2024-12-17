@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MedicosService } from '../models/medicos.service';
 
 @Component({
   selector: 'app-cadastrarmedicos',
@@ -6,36 +7,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastrarmedicos.component.css']
 })
 export class CadastrarmedicosComponent {
-  // Propriedades para armazenar os dados do formulário
-  CRM: string = '';
-  nome: string = '';
-  CodEspe: string = '';
-medico: any;
+  medico ={
+  CRM:   '',
+  nome:   '',
+  CodEspe:  ''
 
+  };
+
+  constructor(private medicosSevice: MedicosService){}
   // Função chamada ao submeter o formulário
   onSubmit() {
-    if (this.isFormValid()) {
-      console.log('Formulário enviado com sucesso');
-      console.log('CRM:', this.CRM);
-      console.log('Nome:', this.nome);
-      console.log('Especialidade:', this.CodEspe);
-
-      // Aqui você pode adicionar a lógica para enviar os dados para o backend ou serviço
-    } else {
-      console.log('Formulário inválido');
-    }
+    this.medicosSevice.adicionarMedico(this.medico).subscribe(response => {
+      console.log('Médico cadastrado:', response);
+      
+      // Limpar os campos do formulário após o envio
+      this.medico.CRM= '';
+      this.medico.nome = '';
+      this.medico.CodEspe = '';
+    }, (error: any) => {
+      console.error('Erro ao cadastrar :', error);
+    });
   }
-
-  // Função de validação do formulário
-  isFormValid(): boolean {
-    return this.CRM !== '' && this.nome !== '' && this.CodEspe !== '';
-  }
-
-  // Função chamada ao clicar no botão "Cancelar"
+  // Método para cancelar e limpar os campos
   cancelar() {
-    this.CRM = '';
-    this.nome = '';
-    this.CodEspe = '';
-    console.log('Cadastro cancelado');
+    this.medico.CRM = '';
+    this.medico.nome = '';
+    this.medico.CodEspe = '';
   }
-}
+  }
+

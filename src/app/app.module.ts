@@ -9,7 +9,7 @@ import { CadastrarPacientesComponent } from './cadastrarpacientes/cadastrarpacie
 import { BuscarMedicosComponent } from './buscarmedicos/buscarmedicos.component';
 import { MenuComponent } from './menu/menu.component';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
     CadastrarmedicosComponent,
     CadastrarEspecialidadeComponent,
     CadastrarPacientesComponent, 
-    BuscarMedicosComponent
+    BuscarMedicosComponent,
+    LoginComponent
    
   ],
   imports: [
