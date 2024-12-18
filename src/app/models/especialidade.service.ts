@@ -14,4 +14,7 @@ export class EspecialidadeService {
   adicionarEspecialidade(especialidade: Especialidade): Observable<any> {
     return this.http.post(`${this.apiUrl}/especialidade`, especialidade);
   }
+  getEspecialidades(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }

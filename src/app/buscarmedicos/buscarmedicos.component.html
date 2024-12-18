@@ -17,12 +17,9 @@
 
       <div class="form-group">
         <label for="especialidade">Especialidade</label>
-        <select id="especialidade" name="especialidade" [(ngModel)]="especialidade" class="form-control">
+        <select id="especialidade" name="especialidade" [(ngModel)]="especialidadeSelecionada" class="form-control">
           <option value="">Selecione</option>
-          <option value="Cardiologia">Cardiologia</option>
-          <option value="Ortopedia">Ortopedia</option>
-          <option value="Neurologia">Neurologia</option>
-          <option value="Pediatria">Pediatria</option>
+          <option *ngFor="let especialidade of especialidade" [value]="especialidade">{{ especialidade}}</option>
         </select>
       </div>
 
@@ -47,7 +44,9 @@
           <td>{{ horario.medico }}</td>
           <td>{{ horario.especialidade }}</td>
           <td>{{ horario.horario }}</td>
-          <td><button class="btn btn-success" (click)="agendar(horario)">Agendar</button></td>
+          <td>
+            <button (click)="agendar(horario)" class="btn btn-success">Agendar</button>
+          </td>
         </tr>
       </tbody>
     </table>
