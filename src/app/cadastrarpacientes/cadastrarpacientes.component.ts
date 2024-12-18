@@ -19,7 +19,7 @@ export class CadastrarPacientesComponent {
   onSubmit() {
     this.pacientesService.adicionarPaciente(this.paciente).subscribe(response => {
       console.log('Paciente cadastrado:', response);
-      
+      alert('Paciente cadastrado com sucesso!');
       // Limpar os campos do formulário após o envio
       this.paciente.nome = '';
       this.paciente.cpf = '';

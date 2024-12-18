@@ -20,7 +20,8 @@ export class CadastrarEspecialidadeComponent {
     console.log('Enviando especialidade...', this.especialidade);  // Para depuração
     this.especialidadeService.adicionarEspecialidade(this.especialidade)
       .subscribe(response => {
-        console.log('Resposta do servidor:', response);  // Para verificar a resposta da API
+        console.log('Resposta do servidor:', response); 
+        alert('Especialidade cadastrada com sucesso!'); // Para verificar a resposta da API
       }, error => {
         console.error('Erro ao adicionar especialidade:', error);  // Para ver os erros
       });

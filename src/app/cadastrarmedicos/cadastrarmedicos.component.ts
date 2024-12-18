@@ -19,7 +19,7 @@ export class CadastrarmedicosComponent {
   onSubmit() {
     this.medicosSevice.adicionarMedico(this.medico).subscribe(response => {
       console.log('Médico cadastrado:', response);
-      
+      alert('Médico cadastrado com sucesso!');
       // Limpar os campos do formulário após o envio
       this.medico.CRM= '';
       this.medico.nome = '';
