@@ -1,30 +1,39 @@
 <div>
+    <!-- Formulário para buscar médicos -->
+    <h2>Agendamento de Consulta</h2>
+  
     <div>
-        <input [(ngModel)]="nome" placeholder="Nome do médico" />
-        <input [(ngModel)]="especialidade" placeholder="Especialidade" /> 
-        <button (click)="buscarMedicos()">Buscar Médicos</button>
-      
-        <div *ngIf="medicos.length > 0">
-          <h3>Selecione um médico:</h3>
-          <ul>
-            <li *ngFor="let medico of medicos" (click)="buscarHorarios(medico.crm)">
-              {{ medico.nome }} - {{ medico.especialidade }}
-            </li>
-          </ul>
-        </div>
-      
-        <div *ngIf="horarios.length > 0">
-          <h3>Horários disponíveis:</h3>
-          <ul>
-            <li *ngFor="let horario of horarios">
-              {{ horario.data_hora }}
-         
-            </li>
-          </ul>
-        </div>
-      </div>
-    <input [(ngModel)]="cpf" placeholder="CPF do paciente" />
-    <input [(ngModel)]="crm" placeholder="CRM do médico" />
-    <input [(ngModel)]="dataHora" type="datetime-local" />
-    <button (click)="agendarConsulta()">Agendar Consulta</button>
+      <input [(ngModel)]="especialidade" placeholder="Especialidade" />
+      <input [(ngModel)]="data" type="date" placeholder="Data do Agendamento" />
+      <input [(ngModel)]="horario" type="time" placeholder="Horário do Agendamento" />
+      <button (click)="buscarMedicos()">Buscar Médicos</button>
+    </div>
+  
+    <!-- Exibindo os médicos encontrados -->
+    <div *ngIf="medicos.length > 0">
+      <h3>Selecione um médico:</h3>
+      <ul>
+        <li *ngFor="let medico of medicos" (click)="selecionarMedico(medico)">
+          {{ medico.nome }} - {{ medico.especialidade }}
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Exibindo a confirmação da seleção do médico e horário -->
+    <div *ngIf="medicoSelecionado">
+      <h3>Confirmar Agendamento</h3>
+      <p>Nome do Médico: {{ medicoSelecionado.nome }}</p>
+      <p>Especialidade: {{ medicoSelecionado.especialidade }}</p>
+      <p>Data: {{ data }}</p>
+      <p>Horário: {{ horario }}</p>
+  
+      <input [(ngModel)]="cpf" placeholder="CPF do paciente" />
+      <button (click)="agendarConsulta()">Agendar Consulta</button>
+    </div>
+  
+    <!-- Mensagem de sucesso ou erro -->
+    <div *ngIf="mensagem">
+      <p>{{ mensagem }}</p>
+    </div>
   </div>
+  
