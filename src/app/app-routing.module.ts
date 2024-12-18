@@ -4,6 +4,7 @@ import { CadastrarEspecialidadeComponent } from './cadastrarespecialidade/cadast
 import { CadastrarhorariosComponent } from './cadastrarhorarios/cadastrarhorarios.component';
 import { CadastrarmedicosComponent } from './cadastrarmedicos/cadastrarmedicos.component';
 import { CadastrarPacientesComponent } from './cadastrarpacientes/cadastrarpacientes.component';
+import { AgendamentoConsultaComponent } from './agendamento-consulta/agendamento-consulta.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
@@ -12,6 +13,7 @@ const routes: Routes = [  { path: 'home', component: HomeComponent},
 { path: 'cadastrarhorarios', component: CadastrarhorariosComponent },
 { path: 'cadastrarespecialidade', component: CadastrarEspecialidadeComponent },
 { path: 'cadastrarpacientes', component: CadastrarPacientesComponent },
+{path: 'agendamento-consulta', component: AgendamentoConsultaComponent},
 { path: 'login', component: LoginComponent},
 { path: '', redirectTo: '/home', pathMatch: 'full' } ];
 

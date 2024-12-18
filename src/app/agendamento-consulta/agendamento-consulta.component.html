@@ -1,0 +1,30 @@
+<div>
+    <div>
+        <input [(ngModel)]="nome" placeholder="Nome do médico" />
+        <input [(ngModel)]="especialidade" placeholder="Especialidade" /> 
+        <button (click)="buscarMedicos()">Buscar Médicos</button>
+      
+        <div *ngIf="medicos.length > 0">
+          <h3>Selecione um médico:</h3>
+          <ul>
+            <li *ngFor="let medico of medicos" (click)="buscarHorarios(medico.crm)">
+              {{ medico.nome }} - {{ medico.especialidade }}
+            </li>
+          </ul>
+        </div>
+      
+        <div *ngIf="horarios.length > 0">
+          <h3>Horários disponíveis:</h3>
+          <ul>
+            <li *ngFor="let horario of horarios">
+              {{ horario.data_hora }}
+         
+            </li>
+          </ul>
+        </div>
+      </div>
+    <input [(ngModel)]="cpf" placeholder="CPF do paciente" />
+    <input [(ngModel)]="crm" placeholder="CRM do médico" />
+    <input [(ngModel)]="dataHora" type="datetime-local" />
+    <button (click)="agendarConsulta()">Agendar Consulta</button>
+  </div>

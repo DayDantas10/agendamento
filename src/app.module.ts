@@ -6,13 +6,13 @@ import { AppComponent } from './app/app.component';
 import { CadastrarmedicosComponent } from './app/cadastrarmedicos/cadastrarmedicos.component'; // Seu componente
 import { CadastrarEspecialidadeComponent } from './app/cadastrarespecialidade/cadastrarespecialidade.component';
 import { CadastrarPacientesComponent } from './app/cadastrarpacientes/cadastrarpacientes.component';
-import { BuscarMedicosComponent } from './app/buscarmedicos/buscarmedicos.component';
 import { MenuComponent } from './app/menu/menu.component';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { LoginComponent } from './app/login/login.component';
 import { CadastrarhorariosComponent } from './app/cadastrarhorarios/cadastrarhorarios.component';
 import { AppRoutingModule } from './app/app-routing.module';
-import { HomeComponent } from './app/home/home.component'; // Importando o AppRoutingModule
+import { HomeComponent } from './app/home/home.component';
+import { AgendamentoConsultaComponent } from './app/agendamento-consulta/agendamento-consulta.component'; // Importando o AppRoutingModule
 
 @NgModule({
   declarations: [
@@ -21,10 +21,10 @@ import { HomeComponent } from './app/home/home.component'; // Importando o AppRo
     CadastrarmedicosComponent,
     CadastrarEspecialidadeComponent,
     CadastrarPacientesComponent, 
-    BuscarMedicosComponent,
     LoginComponent,
     CadastrarhorariosComponent,
-    HomeComponent
+    HomeComponent,
+    AgendamentoConsultaComponent
   ],
   imports: [
     BrowserModule,

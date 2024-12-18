@@ -12,7 +12,6 @@ export class CadastrarPacientesComponent {
     cpf: '',
     email: ''
   };
-
   constructor(private pacientesService: PacientesService) {}
 
   // Método chamado quando o formulário é enviado
