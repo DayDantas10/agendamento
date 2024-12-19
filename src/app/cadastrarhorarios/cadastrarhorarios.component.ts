@@ -9,7 +9,7 @@ import { CadastrarhorariosService } from '../models/cadastrarhorarios.service';
 })
 export class CadastrarhorariosComponent {
 
-  horario = { medico_id: '', horario: '', disponivel: true };
+  horario = { medico_id: '', horario: '', data:'', disponivel: true };
 
   constructor(private CadastrarhorariosService: CadastrarhorariosService) { }
 

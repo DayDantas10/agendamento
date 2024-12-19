@@ -17,7 +17,10 @@
           <label for="medicoId">Código do Médico (CRM)</label>
           <input type="text" id="medicoId" name="medicoId" [(ngModel)]="horario.medico_id" required class="form-control">
         </div>
-  
+        <div class="form-group">
+          <label for="horario">Data</label>
+          <input type="date" id="data" name="data" [(ngModel)]="horario.data" required class="form-control">
+        </div>
         <div class="form-group">
           <label for="horario">Horário</label>
           <input type="time" id="horario" name="horario" [(ngModel)]="horario.horario" required class="form-control">

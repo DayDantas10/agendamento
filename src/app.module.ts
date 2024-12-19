@@ -12,7 +12,7 @@ import { LoginComponent } from './app/login/login.component';
 import { CadastrarhorariosComponent } from './app/cadastrarhorarios/cadastrarhorarios.component';
 import { AppRoutingModule } from './app/app-routing.module';
 import { HomeComponent } from './app/home/home.component';
-import { AgendamentoConsultaComponent } from './app/agendamento-consulta/agendamento-consulta.component'; // Importando o AppRoutingModule
+import { AgendamentoConsultaComponent } from './app/agendamento-consulta/agendamento-consulta.component';
 
 @NgModule({
   declarations: [

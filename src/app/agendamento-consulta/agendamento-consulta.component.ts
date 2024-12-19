@@ -1,34 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AgendamentoService } from '../agendamento.service';
+import { Especialidade } from '../models/especialidades';
 
 @Component({
   selector: 'app-agendamentoconsulta',
   templateUrl: './agendamento-consulta.component.html',
   styleUrls: ['./agendamento-consulta.component.css']
 })
-export class AgendarConsultaComponent {
+export class AgendamentoConsultaComponent implements OnInit{
   especialidade: string = '';
+  especialidades : any[] = [];
   data: string = '';
   horario: string = '';
   cpf: string = '';
-  medicos: any[] = [];         // Lista de médicos retornada da API
+  medicos: any[] = []; // Lista de médicos retornada da API
   medicoSelecionado: any = null; // Médico selecionado para o agendamento
-  mensagem: string = '';         // Mensagem de erro ou sucesso
+  mensagem: string = ''; // Mensagem de erro ou sucesso
 
-  constructor(private AgendamentoService: AgendamentoService) {}
+  constructor(private agendamentoService: AgendamentoService) {}
+
+  ngOnInit(): void {
+    this.agendamentoService.buscarEspecialidades().subscribe((data: Especialidade[]) => {
+      this.especialidades = data;
+    });
+  }
+
+  onButtonClick():void {
+    //this.agendamentoService.buscarMedicos(this.especialidade, this.)
+  }
+
+  onSelectedEspecialidade(event : Event): void {
+    const selectEspecialidade = event.target as HTMLSelectElement;
+    this.especialidade = selectEspecialidade.value;
+    this.buscarMedicos();
+
+  }
 
   // Método para buscar médicos com base na especialidade, data e horário
   buscarMedicos(): void {
-    if (!this.especialidade || !this.data || !this.horario) {
-      this.mensagem = 'Preencha todos os campos para buscar médicos!';
+    if (!this.especialidade) {
+      this.mensagem = 'Escolha uma especialidade!';
       return;
     }
-    this.AgendamentoService.buscarMedicos(this.especialidade, this.data, this.horario)
+    this.agendamentoService.buscarMedicos(this.especialidade)
       .subscribe(data => {
         this.medicos = data;
+        console.log(this.medicos);
         if (this.medicos.length === 0) {
           this.mensagem = 'Nenhum médico disponível para esse horário!';
         }
+      }, error => {
+        this.mensagem = 'Erro ao buscar médicos. Tente novamente!';
       });
   }
 
@@ -45,7 +67,7 @@ export class AgendarConsultaComponent {
       return;
     }
 
-    this.AgendamentoService.agendarConsulta(this.cpf, this.medicoSelecionado.crm, this.data, this.horario)
+    this.agendamentoService.agendarConsulta(this.cpf, this.medicoSelecionado.crm, this.data, this.horario)
       .subscribe(response => {
         this.mensagem = 'Consulta agendada com sucesso!';
         this.resetForm();

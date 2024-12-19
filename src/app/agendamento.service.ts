@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Especialidade } from './models/especialidades';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,13 @@ export class AgendamentoService {
   constructor(private http: HttpClient) {}
 
   // Método para buscar médicos com base na especialidade, data e horário
-  buscarMedicos(especialidade: string, data: string, horario: string): Observable<any[]> {
-    const params = {
-      especialidade,
-      data,
-      horario
-    };
-    return this.http.get<any[]>(`${this.apiUrl}/buscar-medicos`, { params });
+  buscarEspecialidades(): Observable<Especialidade[]> {
+    return this.http.get<Especialidade[]>(`${this.apiUrl}/especialidade`);
+  }
+
+  // Método para buscar médicos com base na especialidade, data e horário
+  buscarMedicos(especialidade: String): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/listarmedicosporespecialidade/${especialidade}`);
   }
 
   // Método para agendar consulta

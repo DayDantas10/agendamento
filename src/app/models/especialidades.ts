@@ -1,4 +1,4 @@
-export class Especialidade{
-    CodEspe:string=''
-    nome:string= ''
+export interface Especialidade{
+    CodEspe:string;
+    nome:string;
 }

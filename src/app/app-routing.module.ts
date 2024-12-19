@@ -14,7 +14,6 @@ const routes: Routes = [  { path: 'home', component: HomeComponent},
 { path: 'cadastrarespecialidade', component: CadastrarEspecialidadeComponent },
 { path: 'cadastrarpacientes', component: CadastrarPacientesComponent },
 {path: 'agendamento-consulta', component: AgendamentoConsultaComponent},
-{ path: 'login', component: LoginComponent},
 { path: '', redirectTo: '/home', pathMatch: 'full' } ];
 
 @NgModule({

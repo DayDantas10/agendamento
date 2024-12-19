@@ -1,39 +1,79 @@
-<div>
-    <!-- Formulário para buscar médicos -->
-    <h2>Agendamento de Consulta</h2>
+<div class="container">
+    <header class="header">
+      <a href="/home" class="btn btn-primary">
+        <img src="https://www.hospitalriogrande.com.br/assets/site/images/logo-hospital-rio-grande.png" alt="Logo">
+      </a>
+      <div class="auth-links">
+        <a href="#" class="logout">Sair</a>
+        <i class="bi bi-arrow-bar-right"></i>
+      </div>
+    </header>
   
-    <div>
-      <input [(ngModel)]="especialidade" placeholder="Especialidade" />
-      <input [(ngModel)]="data" type="date" placeholder="Data do Agendamento" />
-      <input [(ngModel)]="horario" type="time" placeholder="Horário do Agendamento" />
-      <button (click)="buscarMedicos()">Buscar Médicos</button>
-    </div>
+    <!-- Formulário para agendamento de consulta -->
+    <div class="form-container">
+      <h3>Agendamento de Consulta</h3>
+      <form (ngSubmit)="buscarMedicos()">
+        <div class="form-group">
+          <label for="especialidade">Especialidade</label>
+          <select (change) = "onSelectedEspecialidade($event)">
+            <option *ngFor="let especialidade of especialidades" [value]="especialidade.CodEspe">
+                {{especialidade.nome}}
+            </option>
+          </select>          
+        </div>
   
-    <!-- Exibindo os médicos encontrados -->
-    <div *ngIf="medicos.length > 0">
-      <h3>Selecione um médico:</h3>
-      <ul>
-        <li *ngFor="let medico of medicos" (click)="selecionarMedico(medico)">
-          {{ medico.nome }} - {{ medico.especialidade }}
-        </li>
-      </ul>
-    </div>
+        <div class="form-group">
+          <label for="data">Data do Agendamento</label>
+          <input type="date" id="data" name="data" [(ngModel)]="data" required class="form-control" placeholder="Data do Agendamento">
+        </div>
   
-    <!-- Exibindo a confirmação da seleção do médico e horário -->
-    <div *ngIf="medicoSelecionado">
-      <h3>Confirmar Agendamento</h3>
-      <p>Nome do Médico: {{ medicoSelecionado.nome }}</p>
-      <p>Especialidade: {{ medicoSelecionado.especialidade }}</p>
-      <p>Data: {{ data }}</p>
-      <p>Horário: {{ horario }}</p>
+        <div class="form-group">
+          <label for="horario">Horário do Agendamento</label>
+          <input type="time" id="horario" name="horario" [(ngModel)]="horario" required class="form-control" placeholder="Horário do Agendamento">
+        </div>
   
-      <input [(ngModel)]="cpf" placeholder="CPF do paciente" />
-      <button (click)="agendarConsulta()">Agendar Consulta</button>
+        <button (click)="onButtonClick()" class="btn btn-success">Buscar Médicos</button>
+      </form>
+  
+      <!-- Exibindo os médicos encontrados -->
+      <div *ngIf="medicos.length > 0">
+        <h3>Selecione um médico:</h3>
+        <ul class="list-group">
+          <li *ngFor="let medico of medicos" (click)="selecionarMedico(medico)" class="list-group-item">
+            {{ medico.nome }} - {{ medico.especialidade }}
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Exibindo a confirmação da seleção do médico e horário -->
+      <div *ngIf="medicoSelecionado">
+        <h3>Confirmar Agendamento</h3>
+        <p>Nome do Médico: {{ medicoSelecionado.nome }}</p>
+        <p>Especialidade: {{ medicoSelecionado.especialidade }}</p>
+        <p>Data: {{ data }}</p>
+        <p>Horário: {{ horario }}</p>
+  
+        <div class="form-group">
+          <label for="cpf">CPF do paciente</label>
+          <input type="text" id="cpf" name="cpf" [(ngModel)]="cpf" required class="form-control" placeholder="CPF do paciente">
+        </div>
+  
+        <button type="button" class="btn btn-success" (click)="agendarConsulta()">Agendar Consulta</button>
+      </div>
     </div>
   
     <!-- Mensagem de sucesso ou erro -->
     <div *ngIf="mensagem">
-      <p>{{ mensagem }}</p>
+      <p class="alert alert-info">{{ mensagem }}</p>
     </div>
+  
+    <!-- Rodapé -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p><a href="https://www.instagram.com/hospitalriogrande/" target="_blank">Instagram</a></p>
+        <p> Av. Afonso Pena, 754 - Tirol, Natal - RN, 59020-100</p>
+        <p>Telefone: (84) 1234-5678</p>
+      </div>
+    </footer>
   </div>
   
